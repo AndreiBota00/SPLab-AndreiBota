@@ -1,13 +1,14 @@
 package com.example.designpatternslab;
 
-public class Table {
+public class Table extends Element{
     private String title;
 
     public Table(String title) {
         this.title = title;
     }
 
+    @Override
     public void print(){
-        System.out.println("Table: " + title);
+        System.out.println(title);
     }
 }

@@ -1,8 +1,16 @@
 package com.example.designpatternslab;
 
-public class TableOfContents {
+import javax.swing.*;
 
+public class TableOfContents extends Element {
+    private String content;
+
+    public TableOfContents(String content){
+        this.content = content;
+    }
+
+    @Override
     public void print(){
-        System.out.println("Table of Contents");
+        System.out.println(content);
     }
 }

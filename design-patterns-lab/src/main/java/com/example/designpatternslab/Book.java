@@ -3,11 +3,11 @@ package com.example.designpatternslab;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Book {
+public class Book extends Element{
     private String title;
-    private List<Author> authors = new ArrayList<Author>();
-    private List<Chapter> chapters = new ArrayList<>();
-    private TableOfContents tableOfContents = new TableOfContents();
+
+    private List<Author> authors =  new ArrayList<>();
+    private List<Element> elements = new ArrayList<>();
 
     public Book(String title){
         this.title = title;
@@ -17,17 +17,32 @@ public class Book {
         authors.add(author);
     }
 
-    public Chapter addChapter(String chapterName) {
-        Chapter chapter = new Chapter(chapterName);
-        chapters.add(chapter);
-        return chapter;
+    @Override
+    public void add(Element element) {
+        elements.add(element);
     }
 
+    @Override
+    public void remove(Element element) {
+        elements.remove(element);
+    }
+
+    @Override
+    public Element get(int index){
+        return elements.get(index);
+    }
+
+    @Override
     public void print(){
         System.out.println("Book: " + title);
-        for (Author author : authors){ author.print(); }
-        tableOfContents.print();
-        for (Chapter chapter : chapters){ chapter.print(); }
-    }
+        System.out.println("Authors: ");
+        for(Author author : authors){
+            author.print();
+        }
 
+        System.out.println("Contents: ");
+        for(Element element : elements){
+            element.print();
+        }
+    }
 }
