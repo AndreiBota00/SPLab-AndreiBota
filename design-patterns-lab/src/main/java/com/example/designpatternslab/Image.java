@@ -1,14 +1,14 @@
 package com.example.designpatternslab;
 
 public class Image extends Element{
-    private String imageName;
+    private String url;
 
-    public Image(String imageName) {
-        this.imageName = imageName;
+    public Image(String url) {
+        this.url = url;
     }
 
     @Override
     public void print(){
-        System.out.println(imageName);
+        System.out.println(url);
     }
 }
