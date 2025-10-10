@@ -35,6 +35,7 @@ public class Book extends Element{
     @Override
     public void print(){
         System.out.println("Book: " + title);
+
         System.out.println("Authors: ");
         for(Author author : authors){
             author.print();
