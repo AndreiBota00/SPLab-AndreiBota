@@ -1,0 +1,42 @@
+USER
+- userID
+- userName
+- email
+- password
+
+- changePassword()
+- changeEmail()
+- deteleUser()
+- addUser()
+
+Message
+- messageID
+- senderID
+- destinationID
+- messageContent
+
+- sendMessage()
+- deleteMessage()
+- modifyMessage()
+
+Notification
+- notificationID
+- userID
+- notificationContent
+- timestamp
+
+- sendNotification()
+- displayNotification()
+
+
+Group
+- groupID
+- groupName
+- userList
+
+- addUser()
+- removeUser()
+
+
+
+
