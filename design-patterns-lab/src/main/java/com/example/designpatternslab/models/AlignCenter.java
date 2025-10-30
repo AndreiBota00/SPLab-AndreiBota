@@ -1,4 +1,4 @@
-package com.example.designpatternslab;
+package com.example.designpatternslab.models;
 
 public class AlignCenter implements AlignStrategy{
     @Override

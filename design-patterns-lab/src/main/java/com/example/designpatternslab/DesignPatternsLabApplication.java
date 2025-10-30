@@ -1,5 +1,6 @@
 package com.example.designpatternslab;
 
+import com.example.designpatternslab.models.*;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

@@ -1,6 +1,4 @@
-package com.example.designpatternslab;
-
-import javax.swing.*;
+package com.example.designpatternslab.models;
 
 public class TableOfContents extends Element {
     private String content;

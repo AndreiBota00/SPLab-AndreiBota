@@ -1,4 +1,4 @@
-package com.example.designpatternslab;
+package com.example.designpatternslab.models;
 
 abstract class Element {
     public abstract void print();
