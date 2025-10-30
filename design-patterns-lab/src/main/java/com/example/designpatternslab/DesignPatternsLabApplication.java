@@ -1,12 +1,15 @@
 package com.example.designpatternslab;
 
 import com.example.designpatternslab.models.*;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class DesignPatternsLabApplication {
 
     public static void main(String[] args) {
+
+        SpringApplication.run(DesignPatternsLabApplication.class, args);
 
 //    Book noapteBuna = new Book("Noapte buna, copii!");
 //    Author rpGheo = new Author("Radu Pavel", "Gheo");
@@ -54,6 +57,9 @@ public class DesignPatternsLabApplication {
       System.out.println("\nPrinting WITH Alignment\n");
       System.out.println();
       cap1.print();
+
+
+
 
     }
 

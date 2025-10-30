@@ -1,9 +1,11 @@
 package com.example.designpatternslab.services;
 
-import com.example.designpatternslab.models.Book;
+import com.example.designpatternslab.models.*;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+@Service
 public class BookService {
     private final Map<Long, Book> books = new HashMap<>();
     private long nextID = 1;
