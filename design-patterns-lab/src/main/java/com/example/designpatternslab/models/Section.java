@@ -1,10 +1,19 @@
 package com.example.designpatternslab.models;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import lombok.NoArgsConstructor;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@NoArgsConstructor(force = true)
 public class Section extends Element {
     private String title;
+
+    @OneToMany(targetEntity = Element.class, cascade = CascadeType.ALL)
     private List<Element> elements = new ArrayList<Element>();
 
     public Section(String title) {

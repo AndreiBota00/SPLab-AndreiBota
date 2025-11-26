@@ -1,65 +1,43 @@
 package com.example.designpatternslab;
 
-import com.example.designpatternslab.models.*;
+import com.example.designpatternslab.models.Author;
+import com.example.designpatternslab.models.Book;
+import com.example.designpatternslab.models.Paragraph;
+import com.example.designpatternslab.models.Section;
+import com.example.designpatternslab.persistence.BookRepository;
+import jakarta.el.BeanNameResolver;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 
 @SpringBootApplication
 public class DesignPatternsLabApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(DesignPatternsLabApplication.class, args);
+        ApplicationContext context = SpringApplication.run(DesignPatternsLabApplication.class, args);
 
-//    Book noapteBuna = new Book("Noapte buna, copii!");
-//    Author rpGheo = new Author("Radu Pavel", "Gheo");
-//    noapteBuna.addAuthor(rpGheo);
-//
-//    Section cap1 = new Section("Capitolul 1");
-//    Section subcap11 = new Section("Subcapitolul 1.1");
-//    Section subcap111 = new Section("Subcapitolul 1.1.1");
-//    Section subcap1111 = new Section("Subcapitolul 1.1.1.1");
-//
-//    noapteBuna.add(new Paragraph("Multumesc celor care..."));
-//
-//    noapteBuna.add(cap1);
-//    cap1.add(new Paragraph("Moto capitol"));
-//
-//    cap1.add(subcap11);
-//    subcap11.add(new Paragraph("Text from subchapter 1.1"));
-//
-//    subcap11.add(subcap111);
-//    subcap111.add(new Paragraph("Text from subchapter 1.1.1"));
-//
-//    subcap111.add(subcap1111);
-//    subcap1111.add(new Image("Image from subchapter 1.1.1.1"));
-//
-//    noapteBuna.print();
+        BookRepository booksRepository = context.getBean(BookRepository.class);
 
+        Author a1 = new Author("John", "Smith");
+        Author a2 = new Author("Andrei", "Bota");
 
-      Section cap1 = new Section("Capitolul 1");
-      Paragraph p1 = new Paragraph("Paragraph 1");
-      cap1.add(p1);
-      Paragraph p2 = new Paragraph("Paragraph 2");
-      cap1.add(p2);
-      Paragraph p3 = new Paragraph("Paragraph 3");
-      cap1.add(p3);
-      Paragraph p4 = new Paragraph("Paragraph 4");
-      cap1.add(p4);
+        Book book1 = new Book("Design Patterns");
 
-      System.out.println("Printing without Alignment\n");
-      cap1.print();
+        book1.addAuthor(a1);
+        book1.addAuthor(a2);
+        book1.add(new Paragraph("This is the intro paragraph!"));
 
-      p1.setAlignStrategy(new AlignCenter());
-      p2.setAlignStrategy(new AlignRight());
-      p3.setAlignStrategy(new AlignLeft());
+        booksRepository.save(book1);
 
-      System.out.println("\nPrinting WITH Alignment\n");
-      System.out.println();
-      cap1.print();
+        Book book2 = new Book("Book 2");
+        book2.addAuthor(new Author("John", "Doe"));
 
+        Section section = new Section("Chapter 1");
+        section.add(new Paragraph("This is a paragraph!"));
+        book2.add(section);
 
-
+        booksRepository.save(book2);
 
     }
 
