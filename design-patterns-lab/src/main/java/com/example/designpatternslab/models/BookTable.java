@@ -1,9 +1,14 @@
 package com.example.designpatternslab.models;
 
-public class Table extends Element{
+import jakarta.persistence.Entity;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor(force = true)
+public class BookTable extends Element{
     private String title;
 
-    public Table(String title) {
+    public BookTable(String title) {
         this.title = title;
     }
 

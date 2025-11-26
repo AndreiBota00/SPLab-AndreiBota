@@ -1,8 +1,16 @@
 package com.example.designpatternslab.models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Transient;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor(force = true)
 public class Paragraph extends Element{
     private String text;
+    @Transient
     private AlignStrategy alignStrategy;
+    @Transient
     private Context context = new Context();
 
     public Paragraph(String text) {
