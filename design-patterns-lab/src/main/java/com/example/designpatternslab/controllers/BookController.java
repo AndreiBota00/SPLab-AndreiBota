@@ -45,11 +45,6 @@ public class BookController {
     }
 
     // POST /books
-//    @PostMapping
-//    public ResponseEntity<Long> addBook(@RequestBody Book book) {
-//        Book created = createBookCommand.execute(book);
-//        return ResponseEntity.created(URI.create("/books/" + created.getId())).body(created.getId());
-//    }
     @PostMapping
     public String newBook(@RequestBody Book book) {
 
