@@ -2,6 +2,7 @@ package com.example.designpatternslab.controllers;
 
 import com.example.designpatternslab.commands.*;
 import com.example.designpatternslab.models.*;
+import com.example.designpatternslab.observer.AllBooksSubject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,13 +19,15 @@ public class BookController {
     private final GetBookByIdCommand getBookByIdCommand;
     private final UpdateBookCommand updateBookCommand;
     private final DeleteBookCommand deleteBookCommand;
+    private final AllBooksSubject allBooksSubject;
 
-    public BookController(CreateBookCommand createBookCommand, GetBooksCommand getBooksCommand, GetBookByIdCommand getBookByIdCommand, UpdateBookCommand updateBookCommand, DeleteBookCommand deleteBookCommand) {
+    public BookController(CreateBookCommand createBookCommand, GetBooksCommand getBooksCommand, GetBookByIdCommand getBookByIdCommand, UpdateBookCommand updateBookCommand, DeleteBookCommand deleteBookCommand, AllBooksSubject allBooksSubject) {
         this.createBookCommand = createBookCommand;
         this.getBooksCommand = getBooksCommand;
         this.getBookByIdCommand = getBookByIdCommand;
         this.updateBookCommand = updateBookCommand;
         this.deleteBookCommand = deleteBookCommand;
+        this.allBooksSubject = allBooksSubject;
     }
 
     // GET /books
@@ -42,11 +45,17 @@ public class BookController {
     }
 
     // POST /books
+//    @PostMapping
+//    public ResponseEntity<Long> addBook(@RequestBody Book book) {
+//        Book created = createBookCommand.execute(book);
+//        return ResponseEntity.created(URI.create("/books/" + created.getId())).body(created.getId());
+//    }
     @PostMapping
-    public ResponseEntity<Long> addBook(@RequestBody Book book) {
-        Book created = createBookCommand.execute(book);
-        return ResponseEntity.created(URI.create("/books/" + created.getId())).body(created.getId());
+    public String newBook(@RequestBody Book book) {
 
+        Book created = createBookCommand.execute(book);
+        allBooksSubject.add(created);
+        return "Book saved [" + created.getId() + "] " + created.getTitle();
     }
 
     // PUT /books/{id}
