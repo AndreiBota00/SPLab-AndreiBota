@@ -1,0 +1,20 @@
+Proiect: Gestionarea meniului unu restaurant.
+
+Functionalitati:
+adaugarea unui nou preparat
+editarea unui preparate existent(ex: schimbare pret, nume, cantitate, etc)
+vizualizarea tuturor preparatelor
+vizualizarea unu preparate dupa ID
+stergerea unui preparat
+
+
+Structura datelor:
+
+id – identificator unic pentru preparat
+name – denumirea felului de mâncare
+category – categoria (Aperitiv, Fel Principal, Desert, Băuturi)
+description – detalii opționale despre preparat
+price – prețul în meniul restaurantului
+quantity - numarul de produse
+
+Baza de date: H2
